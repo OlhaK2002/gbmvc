@@ -18,6 +18,7 @@ class View{
         include 'application/views/layout.php';
         $action = $this->route['action'];
         include 'application/views/'.$action.'.php';
+        include 'application/views/end.php';
 
     }
 

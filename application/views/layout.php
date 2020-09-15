@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <html lang="ru">
 <head>
     <meta charset="utf-8">
@@ -19,7 +22,9 @@
                 <li><a href="/">Главная</a></li>
                 <li><a href="/authorization/login">Авторизация</a></li>
                 <li><a href="/registration/register">Регистрация</a></li>
+                <li><a href="/application/views/logout.php">Выход</a></li>
             </ul>
         </nav>
     </div>
+</header>
 <hr>

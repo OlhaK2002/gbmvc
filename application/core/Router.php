@@ -39,7 +39,7 @@ class Router
         if ($this->match()) {
             $path = 'application\controllers\\' . ucfirst($this->params['controller']) . 'Controller';
             $controller = new $path($this->params);
-            $action = $this->params['action'] . 'Action';
+            $action = $this->params['action'].'Action';
             $controller->$action();
         }
     }

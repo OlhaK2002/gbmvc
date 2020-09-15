@@ -3,26 +3,23 @@
 namespace application\controllers;
 
 use application\core\Controller;
+use PDO;
 
 class AuthorizationController extends Controller
 {
-    protected $data = [];
-
-
+    protected $login;
+    protected $password;
 
     public function loginAction()
     {
+        $this->login = $_POST['login1'];
+        $this->password = $_POST['password2'];
         $this->view->getView();
+        $this->model->loginAction($this->login, $this->password);
+        $this->model->passwordAction();
 
-        /* $path = 'application\controllers\RegistrationController';
-        $controller = new $path($this->route);
-         $controller->getName();*/
-
-        $this->data = $this->model->get_data();
-        var_dump($this->data);
-       /* $path = 'application\controllers\AVerificationController';
-        $controller = new $path($this->route);
-        echo $controller->verification();*/
     }
+
+
 
 }
