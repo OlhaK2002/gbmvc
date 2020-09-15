@@ -12,12 +12,12 @@ class AuthorizationController extends Controller
 
     public function loginAction()
     {
+        $this->view->getView();
         $this->login = $_POST['login1'];
         $this->password = $_POST['password2'];
-        $this->view->getView();
+        $_SESSION['error']="";
         $this->model->loginAction($this->login, $this->password);
         $this->model->passwordAction();
-
     }
 
 

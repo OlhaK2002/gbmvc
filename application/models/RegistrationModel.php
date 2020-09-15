@@ -18,13 +18,9 @@ class RegistrationModel extends Model
     protected $count_0=0;
     protected $count_A=0;
     protected $count_b=0;
-    protected $k;
-
-
 
     public function registerAction($name, $surname, $email, $login, $password1, $password2)
     {
-        $this->k=1;
         $this->name = $name;
         $this->surname = $surname;
         $this->email = $email;
@@ -62,24 +58,28 @@ class RegistrationModel extends Model
 
     public function passwordevidenceAction()
     {
-        if(strlen($this->password1)<6) {$_SESSION['error_password'] = "Пароль должен быть не меньше шести символов";return false;}
+        if(strlen($this->password1)>0&&strlen($this->password1)<6) {$_SESSION['error_password'] = "Пароль должен быть не меньше шести символов";return false;}
         else {return true;}
     }
 
     public function password1evidenceAction()
     {
+        if (strlen($this->password1)>0){
+            for($i=0;$i<strlen($this->password1);$i++) {
+                if ($this->password1[$i] >= 'A' && $this->password1[$i] <= 'Z') $this->count_A++;
+                if ($this->password1[$i] >= 'a' && $this->password1[$i] <= 'z') $this->count_b++;
+                if ($this->password1[$i] >= '0' && $this->password1[$i] <= '9') $this->count_0++;
+            }
 
-        for($i=0;$i<strlen($this->password1);$i++) {
-            if ($this->password1[$i] >= 'A' && $this->password1[$i] <= 'Z') $this->count_A++;
-            if ($this->password1[$i] >= 'a' && $this->password1[$i] <= 'z') $this->count_b++;
-            if ($this->password1[$i] >= '0' && $this->password1[$i] <= '9') $this->count_0++;
+            if(!($this->count_A>0 && $this->count_b>0 && $this->count_0 >0)) {
+                $_SESSION['error_password1']="Пароль должен содержать цифры, а также символы верхнего и нижнего регистра";
+                return false;
+            }
+
+            else return true;
         }
-        if(!($this->count_A>0 && $this->count_b>0 && $this->count_0 >0)) {
-            $_SESSION['error_password1']="Пароль должен содержать цифры, а также символы верхнего и нижнего регистра";
-            return false;
-        }
-        else return true;
     }
+
     public function hashAction()
     {
         $this->password = password_hash($this->password1, PASSWORD_DEFAULT);

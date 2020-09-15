@@ -16,6 +16,7 @@ class AuthorizationModel extends Model
 
     public function loginAction($login, $password)
     {
+        $_SESSION['error']="";
         $this->login = $login;
         $this->password = $password;
 
@@ -33,19 +34,22 @@ class AuthorizationModel extends Model
     }
     public function passwordAction()
     {
-        if($this->evidenceAction()){
+        if ($this->evidenceAction()) {
             $_SESSION["login"] = $this->login;
             $_SESSION["password"] = "password";
-            $_SESSION['error']="";
+            $_SESSION['error'] = "";
             $_SESSION['user_id'] = $this->array['user_id'];
             echo ' <script language="javascript">
                 window.location.href = "/main/index"
               </script>';
-        }
-        else {$_SESSION['error']="Неверно указан логин или пароль";
-       ' <script language="javascript">
-                window.location.href = "/authorization/login"
-              </script>';
+        } else {
+            if (strlen($this->password) > 0) {
+                $_SESSION['error'] = "Неверно указан логин или пароль";
+
+                ' <script language="javascript">
+                        window.location.href = "/authorization/login"
+                      </script>';
+            }
         }
     }
 }

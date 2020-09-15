@@ -19,10 +19,11 @@ session_start();
     <div class="menu">
         <nav>
             <ul>
-                <li><a href="/">Главная</a></li>
-                <li><a href="/authorization/login">Авторизация</a></li>
-                <li><a href="/registration/register">Регистрация</a></li>
-                <li><a href="/application/views/logout.php">Выход</a></li>
+
+                <?php if($_SESSION["login"]=="" and $_SESSION["password"]=="")echo '<li><a href="/authorization/login">Авторизация</a></li>';?>
+                <?php if($_SESSION["login"]=="" and $_SESSION["password"]=="")echo '<li><a href="/registration/register">Регистрация</a></li>';?>
+                <?php if($_SESSION["login"]!="" and $_SESSION["password"]!="")echo '<li><a href="/application/views/logout.php">Выход</a></li>';?>
+
             </ul>
         </nav>
     </div>
