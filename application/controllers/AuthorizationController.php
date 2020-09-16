@@ -3,7 +3,6 @@
 namespace application\controllers;
 
 use application\core\Controller;
-use PDO;
 
 class AuthorizationController extends Controller
 {
