@@ -2,6 +2,7 @@
 
 namespace application\models;
 
+use application\controllers\MainController;
 use application\core\Model;
 
 use application\core\View;
@@ -16,6 +17,8 @@ class MainModel extends Model
     protected $sql0;
     protected $array;
     protected $index;
+    protected $array_view;
+
 
     public function indexAction()
     {
@@ -50,20 +53,20 @@ class MainModel extends Model
         $sql1->execute();
 
 
-            $array_view  = [
+            $this->array_view  = [
                 'author' => "{$this->array['login']}",
                 'data' => "{$this->array['data']}",
                 'text' => "{$this->array['text']}",
                 'id' => "{$this->array['id']}"
             ];
 
-            $view = new View($this->route);
-            $view->replyView($array_view);
-
+        $controller = new MainController($this->route);
+        $controller->getcommentAction($this->array_view);
 
         $this->result = $sql1->rowCount();
 
-        if ($this->result > 0) {
+        if ($this->result > 0)
+        {
 
             while ($this->array = $sql1->FETCH(PDO::FETCH_ASSOC))
             {
@@ -74,6 +77,7 @@ class MainModel extends Model
         }
 
     }
+
 
 
 }

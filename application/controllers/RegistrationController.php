@@ -29,6 +29,8 @@ Class RegistrationController extends Controller
         $this->password1 = $_POST['Password1'];
         $this->password2 = $_POST['Password2'];
 
+        $this->view->getView();
+
         $this->model->registerAction($this->name, $this->surname, $this->email, $this->login, $this->password1, $this->password2);
         $this->model->emailevidenceAction();
         $this->model->loginevidenceAction();
@@ -36,8 +38,20 @@ Class RegistrationController extends Controller
         $this->model->passwordevidenceAction();
         $this->model->password1evidenceAction();
         $this->model->hashAction();
-        $this->model->resultAction();
-        $this->view->getView();
+
+        if($this->model->resultAction()){
+            $_SESSION['error_email']="";
+            $_SESSION['error_login']="";
+            $_SESSION['error_passwords']="";
+            $_SESSION['error_password']="";
+            $_SESSION['error_password1']="";
+
+            echo ' <script language="javascript">
+                window.location.href = "/main/index"
+              </script>';
+        }
+
+
     }
 
 

@@ -76,8 +76,7 @@ class CommentModel extends Model
                     'id' => "{$this->array1['id']}"
                 ];
 
-                $view = new View($this->route);
-                $view->replyView($array_view);
+                return $array_view;
 
             }
         }

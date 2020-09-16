@@ -13,6 +13,11 @@ class MainController extends Controller
         $this->view->getView();
 
         $this->model->indexAction();
+
+    }
+    public function getcommentAction($array)
+    {
+        $this->view->replyView($array);
     }
 
 

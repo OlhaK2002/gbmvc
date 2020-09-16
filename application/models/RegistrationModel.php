@@ -126,20 +126,9 @@ class RegistrationModel extends Model
             $_SESSION["login"] = $this->login;
             $_SESSION["password"] = "password";
             $_SESSION["user_id"] = $array['user_id'];
-            $_SESSION['error']="";
-            $_SESSION['error_email']="";
-            $_SESSION['error_login']="";
-            $_SESSION['error_password']="";
-            $_SESSION['error_password1']="";
-            $_SESSION['error_passwords']="";
-
-            echo ' <script language="javascript">
-                window.location.href = "/main/index"
-              </script>';
+            return true;
         }
-        else' <script language="javascript">
-                window.location.href = "/registration/register"
-              </script>';
+        return false;
     }
 
 
