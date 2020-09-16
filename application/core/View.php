@@ -10,24 +10,23 @@ class View{
         $this->route = $route;
     }
 
-    public function getView($value = [])
+    public function getView()
     {
-
-        if(empty($value)){
         include 'application/views/layout.php';
-        }
-        extract($value);
         $action = $this->route['action'];
-        if(file_exists('application/views/'.$action.'.php'))include 'application/views/'.$action.'.php';
 
-            ob_start();
-            include 'application/views/reply.php';
-            $value = ob_get_contents();
-
-
+        include 'application/views/'.$action.'.php';
 
         include 'application/views/end.php';
 
+    }
+
+    public function replyView($values = [])
+    {
+        extract($values);
+        ob_start();
+        include 'application/views/reply.php';
+        $values = ob_get_contents();
     }
 
 }

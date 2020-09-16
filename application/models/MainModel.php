@@ -4,6 +4,7 @@ namespace application\models;
 
 use application\core\Model;
 
+use application\core\View;
 use PDO;
 
 class MainModel extends Model
@@ -42,33 +43,23 @@ class MainModel extends Model
         $this->sql->execute();
 
         $this->array = $this->sql->FETCH(PDO::FETCH_ASSOC);
-        echo '<span style = "font-style: italic">' . $this->array['login'] . '</span>' . '&nbsp' . '<span style="font-style: italic; color: lightseagreen">' . " (" . $this->array['data'] . ") " . '</span>' . '</br>' . '&nbsp' . '&nbsp' . $this->array["text"];
         $this->index = $this->array['id'];
 
         $sql1 = $this->db->getConnect()->prepare("SELECT * FROM `comments` WHERE `parent_id`=:value");
         $sql1->bindParam(':value', $this->index, PDO::PARAM_INT);
         $sql1->execute();
 
-        if($_SESSION["login"]!="" and $_SESSION["password"]!=""){
-            echo '<div class="accordion" id="accordionExample">
-            <div class="card">
-                <div class="card-header" id="heading' . $this->index . '">
-                    <h2 class="mb-0">
-                     <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" aria-expanded="false" data-target="#collapse_' . $this->index . '" aria-controls="collapse_' . $this->index . '">
-                      Ответить
-                    </button>
-                    </h2>
-                </div>
-                <div id="collapse_' . $this->index . '" class="collapse" aria-labelledby="heading' . $this->index . '" data-parent="#accordionExample">
-                    <div class="card-body">
-                          <textarea required name="text" id="text_id' . $this->index . '" class="form-control"></textarea></br>
-                          <input type="hidden" id="parent_id' . $this->index . '" class="parent_id" name="parent_id" value="' . $this->index . '">
-                          <button id="' . $this->index . '" type="submit" class="btn btn-light">Отправить</button>
 
-                    </div>
-                </div>';
-            echo '</div><ul><li><div id="comment' . $this->index . '"></div></li></ul>';
-        }
+            $array_view  = [
+                'author' => "{$this->array['login']}",
+                'data' => "{$this->array['data']}",
+                'text' => "{$this->array['text']}",
+                'id' => "{$this->array['id']}"
+            ];
+
+            $view = new View($this->route);
+            $view->replyView($array_view);
+
 
         $this->result = $sql1->rowCount();
 
