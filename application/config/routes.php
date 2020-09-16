@@ -1,10 +1,7 @@
 <?php
 
 return [
-    ''=> [
-        'controller'=>'main',
-        'action' => 'index'
-    ],
+
     'main/index'=> [
         'controller'=>'main',
         'action' => 'index'
@@ -17,22 +14,9 @@ return [
         'controller' => 'authorization',
         'action' => 'login'
     ],
-    'verificationr/email' => [
-        'controller' => 'verificationr',
-        'action' => 'email'
-    ],
-    'verificationr/passwords' => [
-        'controller' => 'verificationr',
-        'action' => 'passwords'
-    ],
-    'verificationr/password' => [
-        'controller' => 'verificationr',
-        'action' => 'password'
-    ],
-    'verificationr/password1' => [
-        'controller' => 'verificationr',
-        'action' => 'password1'
-    ],
-
+    'comment/comments' => [
+        'controller' => 'comment',
+        'action' => 'comments'
+    ]
 
 ];

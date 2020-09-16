@@ -3,6 +3,7 @@
 namespace application\models;
 
 use application\core\Model;
+
 use PDO;
 
 class AuthorizationModel extends Model
