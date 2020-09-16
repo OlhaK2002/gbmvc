@@ -66,6 +66,10 @@ class RegistrationModel extends Model
     {
         if (strlen($this->password1)>0){
             for($i=0;$i<strlen($this->password1);$i++) {
+
+               // if (preg_match("#^".$this->password1[$i]."$#"))
+                if(preg_match("#^[a-я]$#", $this->password1[$i]))$this->count_b++;
+                if(preg_match("#^[a-я]$#", $this->password1[$i]))$this->count_A++;
                 if ($this->password1[$i] >= 'A' && $this->password1[$i] <= 'Z') $this->count_A++;
                 if ($this->password1[$i] >= 'a' && $this->password1[$i] <= 'z') $this->count_b++;
                 if ($this->password1[$i] >= '0' && $this->password1[$i] <= '9') $this->count_0++;

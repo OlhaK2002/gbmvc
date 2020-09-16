@@ -3,12 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3da9abab-7c73-4527-a7be-3d6f59699172" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/controllers/CommentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/CommentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/core/View.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/core/View.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/models/CommentModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/CommentModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/models/MainModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/MainModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/reply.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/reply.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/models/RegistrationModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/RegistrationModel.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +50,7 @@
       <workItem from="1600068061985" duration="26626000" />
       <workItem from="1600103610629" duration="26724000" />
       <workItem from="1600178514270" duration="4605000" />
-      <workItem from="1600239461506" duration="17271000" />
+      <workItem from="1600239461506" duration="18407000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1600091321238</created>
@@ -85,7 +80,14 @@
       <option name="project" value="LOCAL" />
       <updated>1600252548329</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="5(16.09.2020)">
+      <created>1600257469219</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1600257469220</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -96,7 +98,8 @@
     <MESSAGE value="2(15.09.2020)" />
     <MESSAGE value="3(15.09.2020)" />
     <MESSAGE value="4(16.09.2020)" />
-    <option name="LAST_COMMIT_MESSAGE" value="4(16.09.2020)" />
+    <MESSAGE value="5(16.09.2020)" />
+    <option name="LAST_COMMIT_MESSAGE" value="5(16.09.2020)" />
   </component>
   <component name="WindowStateProjectService">
     <state x="358" y="71" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1600164695996">
@@ -111,10 +114,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1600255728749" />
-    <state x="393" y="0" key="CommitChangelistDialog2" timestamp="1600252546561">
+    <state x="393" y="0" key="CommitChangelistDialog2" timestamp="1600257468085">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="393" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1600252546561" />
+    <state x="393" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1600257468085" />
     <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1600239479633">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -123,10 +126,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="336" y="186" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1600247835095" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1600252552163">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1600257477739">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1600252552163" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1600257477739" />
     <state x="111" y="140" width="1339" height="624" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1600254705851">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
