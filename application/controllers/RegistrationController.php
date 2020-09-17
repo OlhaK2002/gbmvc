@@ -50,6 +50,11 @@ Class RegistrationController extends Controller
                 window.location.href = "/main/index"
               </script>';
         }
+        else {
+            echo ' <script language="javascript">
+                window.location.href = "/registration/register"
+              </script>';
+        }
 
 
     }

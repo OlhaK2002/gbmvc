@@ -1,4 +1,4 @@
-        $(document).on('click', 'button', function () {
+        $(document).on('click', 'button.btn', function () {
             var id = $(this).attr('id');
             var text = $("#text_id" + id).val();
             var parent_id = $("#parent_id" + id).val();

@@ -14,10 +14,10 @@ class AuthorizationModel extends Model
     protected $array;
     protected $hash;
     protected $password_verification;
+    protected $error = [];
 
-    public function loginAction($login, $password)
+    public function ajaxAction($login, $password)
     {
-        $_SESSION['error']="";
         $this->login = $login;
         $this->password = $password;
 
@@ -32,16 +32,17 @@ class AuthorizationModel extends Model
         $this->password_verification = password_verify($this->password,$this->hash);
         return $this->password_verification;
 
+
     }
     public function passwordAction()
     {
-        if ($this->evidenceAction()) {
+
+        $this->error['error_login'] = "Неверный логин или пароль";
+        if (strlen($this->password)>0 && $this->evidenceAction()) {
             $_SESSION["login"] = $this->login;
             $_SESSION['user_id'] = $this->array['user_id'];
-            return true;
+            $this->error['error_login'] = "";
         }
-        else {
-            return false;
-        }
+        return $this->error;
     }
 }

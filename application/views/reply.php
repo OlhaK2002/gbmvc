@@ -14,7 +14,7 @@
             <div class="card-body">
                 <textarea required name="text" id="text_id'.$id.'" class="form-control"></textarea></br>
                 <input type="hidden" id="parent_id'.$id.'" class="parent_id" name="parent_id" value="'.$id.'">
-                <button id="'.$id.'" type="submit" class="btn btn-light">Отправить</button>
+                <button id="'.$id.'" type="submit" class="btn">Отправить</button>
 
             </div>
         </div>

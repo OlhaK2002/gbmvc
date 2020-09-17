@@ -2,7 +2,6 @@
 
 session_start();
 $_SESSION['login']="";
-$_SESSION['password']="";
 $_SESSION['error']="";
 $_SESSION['error_email']="";
 $_SESSION['error_login']="";

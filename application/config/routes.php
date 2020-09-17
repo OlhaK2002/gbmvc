@@ -10,9 +10,17 @@ return [
         'controller' => 'registration',
         'action' => 'register'
     ],
+    'registration/ajax' => [
+        'controller' => 'registration',
+        'action' => 'ajax'
+    ],
     'authorization/login' => [
         'controller' => 'authorization',
         'action' => 'login'
+    ],
+    'authorization/ajax' => [
+        'controller' => 'authorization',
+        'action' => 'ajax'
     ],
     'comment/comments' => [
         'controller' => 'comment',
