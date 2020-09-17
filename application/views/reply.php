@@ -18,5 +18,5 @@
 
             </div>
         </div>
-</div><ul><li><div id="comment'.$id.'"></div></li></ul></div>';
+</div><ul><li><div id="comment'.$id.'"></div></li></ul>';
 }
