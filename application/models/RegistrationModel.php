@@ -18,8 +18,7 @@ class RegistrationModel extends Model
     protected $count_0=0;
     protected $count_A=0;
     protected $count_b=0;
-    protected $array = [];
-
+    protected $error = [];
 
     public function ajaxAction($name, $surname, $email, $login, $password1, $password2)
     {
@@ -29,12 +28,6 @@ class RegistrationModel extends Model
         $this->login = $login;
         $this->password1 = $password1;
         $this->password2 = $password2;
-        $this->emailevidenceAction();
-        $this->loginevidenceAction();
-        $this->passwordsevidenceAction();
-        $this->passwordevidenceAction();
-        $this->password1evidenceAction();
-        $this->hashAction();
     }
 
     public function emailevidenceAction()
@@ -43,7 +36,7 @@ class RegistrationModel extends Model
         $this->sql = $this->db->getConnect()->prepare("SELECT * FROM `registor` WHERE `email`= :email");
         $this->sql->bindParam(':email',$this->email,PDO::PARAM_STR);
         $this->sql->execute();
-        if($this->sql->rowCount()>=1){$this->array['error']['error_email'] = "Ваша почта уже используется другим пользователем";}
+        if($this->sql->rowCount()>=1){$this->error['error_email'] = "Ваша почта уже используется другим пользователем";}
 
     }
 
@@ -53,19 +46,19 @@ class RegistrationModel extends Model
         $this->sql = $this->db->getConnect()->prepare("SELECT * FROM `registor` WHERE `login`= :login");
         $this->sql->bindParam(':login',$this->login,PDO::PARAM_STR);
         $this->sql->execute();
-        if($this->sql->rowCount()>=1){$this->array['error']['error_login'] = "Ваш логин уже используется другим пользователем";}
+        if($this->sql->rowCount()>=1){$this->error['error_login'] = "Ваш логин уже используется другим пользователем";}
 
     }
 
     public function passwordsevidenceAction()
     {
-        if($this->password1!=$this->password2){$this->array['error']['error_passwords'] = "Пароли не совпадают";}
+        if($this->password1!=$this->password2){$this->error['error_passwords'] = "Пароли не совпадают";}
 
     }
 
     public function passwordevidenceAction()
     {
-        if(strlen($this->password1)>0&&strlen($this->password1)<6) {$this->array['error']['error_password'] = "Пароль должен быть не меньше шести символов";}
+        if(strlen($this->password1)>0&&strlen($this->password1)<6) {$this->error['error_password'] = "Пароль должен быть не меньше шести символов";}
 
     }
 
@@ -81,7 +74,7 @@ class RegistrationModel extends Model
             }
 
             if(!($this->count_A>0 && $this->count_b>0 && $this->count_0 >0)) {
-                $this->array['error']['error_password1']="Пароль должен содержать цифры, а также символы верхнего и нижнего регистра";
+                $this->error['error_password1']="Пароль должен содержать цифры, а также символы верхнего и нижнего регистра";
 
             }
 
@@ -96,9 +89,9 @@ class RegistrationModel extends Model
     public function intodbAction()
     {
 
-        if(empty($this->error['error']))
+        if(empty($this->error))
         {
-            $this->array['error']['success'] = 'success';
+            $this->error['success'] = 'success';
             $this->sql= $this->db->getConnect()->prepare("INSERT INTO `registor`(`name`,`surname`,`email`,`login`,`password1`) VALUES (:name, :surname, :email, :login, :password)");
             $this->sql->bindParam(':name', $this->name, PDO::PARAM_STR);
             $this->sql->bindParam(':surname', $this->surname, PDO::PARAM_STR);
@@ -129,13 +122,12 @@ class RegistrationModel extends Model
         if($this->intodbAction())
         {
             $array = $this->evidencedbAction()->FETCH(PDO::FETCH_ASSOC);
-           /* $_SESSION["login"] = $this->login;
-            $_SESSION["user_id"] = $array['user_id'];*/
-            $this->array['login'] = $this->login;
-            $this->array['user_id'] = $array ['user_id'];
+            $_SESSION["login"] = $this->login;
+            $_SESSION["password"] = "password";
+            $_SESSION["user_id"] = $array['user_id'];
 
         }
-        return $this->array;
+        return $this->error;
     }
 
 
