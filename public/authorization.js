@@ -11,7 +11,6 @@ $(document).on('click', '#authorization', function () {
             console.log(result['error_login']);
             if(result['error_login'] === ""){window.location.href = "/main/index"}
             else {$('#result').append(result['error_login']);}
-            $('#login1').val('');
             $('#password2').val('');}
 
 
