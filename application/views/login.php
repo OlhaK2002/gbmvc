@@ -1,5 +1,3 @@
-<?php if($_SESSION['error']!=""){echo '<li><span style="color: red">'.$_SESSION['error'].'</span></li><br/>';}?>
-
 <div class="field">
     <span id="title2">Авторизация:</span><br/>
 

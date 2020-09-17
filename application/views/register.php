@@ -1,12 +1,3 @@
-<?php
-echo '<ul>';
-if($_SESSION['error_email']!=""){echo '<li><span style="color: red">'.$_SESSION['error_email'].'</span></li><br/>';}
-if($_SESSION['error_login']!=""){echo '<li><span style="color: red">'.$_SESSION['error_login'].'</span></li><br/>';}
-if($_SESSION['error_passwords']!=""){echo '<li><span style="color: red">'.$_SESSION['error_passwords'].'</span></li><br/>';}
-if($_SESSION['error_password']!=""){echo '<li><span style="color: red">'.$_SESSION['error_password'].'</span></li><br/>';}
-if($_SESSION['error_password1']!=""){echo '<li><span style="color: red">'.$_SESSION['error_password1'].'</span></li><br/>';}
-echo '</ul>';
-?>
 <div class="field">
     <span id="title2">Регистрация:</span><br/>
         <span>Имя: </span><br/>
