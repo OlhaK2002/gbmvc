@@ -17,15 +17,11 @@ Class RegistrationController extends Controller
     {
 
         $this->model->ajaxAction($_POST['Name'], $_POST['Surname'], $_POST['Email'], $_POST['Login'], $_POST['Password1'], $_POST['Password2']);
-        $this->model->emailevidenceAction();
-        $this->model->loginevidenceAction();
-        $this->model->passwordsevidenceAction();
-        $this->model->passwordevidenceAction();
-        $this->model->password1evidenceAction();
-        $this->model->hashAction();
 
         $array = $this->model->resultAction();
-        $result1 = json_encode($array);
+        $_SESSION['login']=$array['login'];
+        $_SESSION['user_id']=$array['user_id'];
+        $result1 = json_encode($array['error']);
         echo $result1;
 
     }

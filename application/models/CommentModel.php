@@ -28,15 +28,16 @@ class CommentModel extends Model
 
     public function intoAction()
     {
-        if($this->text!=""&&$this->authorid!="")
+        if($this->text!=""&&$this->authorid!=""&&$this->count<1)
         {
             $this->sql = $this->db->getConnect()->prepare("INSERT INTO `comments` (`authorid`,`text`, `parent_id`) VALUES ( :authorid, :text, :parent_id)");
             $this->sql->bindParam(':authorid', $this->authorid, PDO::PARAM_STR);
             $this->sql->bindParam(':text', $this->text, PDO::PARAM_STR);
             $this->sql->bindParam(':parent_id', $this->parent_id, PDO::PARAM_INT);
-            $this->sql->execute(); return true;
+            $this->sql->execute();
+            $this->count++;
         }
-        return false;
+        return true;
     }
 
     public function evidenceAction()
