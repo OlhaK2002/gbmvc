@@ -14,9 +14,11 @@
             <div class="card-body">
                 <textarea required name="text" id="text_id'.$id.'" class="form-control"></textarea></br>
                 <input type="hidden" id="parent_id'.$id.'" class="parent_id" name="parent_id" value="'.$id.'">
+                <input type="hidden" id="nesting'.$id.'" class="nesting" name="nesting" value="'.$nesting.'">
                 <button id="'.$id.'" type="submit" class="btn">Отправить</button>
 
             </div>
         </div>
-</div><ul><li><div id="comment'.$id.'"></div></li></ul>';
+</div>
+<ul><li><div id="comment'.$id.'"></div></li></ul>';
 }

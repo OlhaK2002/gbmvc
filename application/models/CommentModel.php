@@ -18,22 +18,25 @@ class CommentModel extends Model
     protected $id;
     protected $array1;
     protected $index;
+    protected $nesting;
 
-    public function commentsAction( $text, $parent_id, $author_id)
+    public function commentsAction( $text, $parent_id, $author_id, $nesting)
     {
         $this->text = $text;
         $this->parent_id = $parent_id;
         $this->authorid = $author_id;
+        $this->nesting = $nesting;
     }
 
     public function intoAction()
     {
         if($this->text!=""&&$this->authorid!=""&&$this->count<1)
         {
-            $this->sql = $this->db->getConnect()->prepare("INSERT INTO `comments` (`authorid`,`text`, `parent_id`) VALUES ( :authorid, :text, :parent_id)");
+            $this->sql = $this->db->getConnect()->prepare("INSERT INTO `comments` (`authorid`,`text`, `parent_id`, `nesting`) VALUES (:authorid, :text, :parent_id, :nesting)");
             $this->sql->bindParam(':authorid', $this->authorid, PDO::PARAM_STR);
             $this->sql->bindParam(':text', $this->text, PDO::PARAM_STR);
             $this->sql->bindParam(':parent_id', $this->parent_id, PDO::PARAM_INT);
+            $this->sql->bindParam(':nesting', $this->nesting, PDO::PARAM_INT);
             $this->sql->execute();
             $this->count++;
         }
@@ -45,9 +48,10 @@ class CommentModel extends Model
         if($this->text!=""&&$this->authorid!=""){
             if($this->intoAction())
             {
-                $this->sql = $this->db->getConnect()->prepare("SELECT * FROM `comments` WHERE `text`=:text and `parent_id`=:parent_id");
+                $this->sql = $this->db->getConnect()->prepare("SELECT * FROM `comments` WHERE `text`=:text and `parent_id`=:parent_id and `nesting`=:nesting");
                 $this->sql->bindParam(':text', $this->text, PDO::PARAM_STR);
                 $this->sql->bindParam(':parent_id', $this->parent_id, PDO::PARAM_INT);
+                $this->sql->bindParam(':nesting', $this->nesting, PDO::PARAM_INT);
                 $this->sql->execute();
                 return $this->sql;
             }
@@ -68,9 +72,9 @@ class CommentModel extends Model
                 $this->sql->execute();
                 $this->array1 = $this->sql->FETCH(PDO::FETCH_ASSOC);
                 $this->index = $this->array1['id'];
-
+                $this->nesting = $this->array['nesting']+1;
                 $array_view  = [
-
+                    'nesting' => "{$this->nesting}",
                     'author' => "{$this->array1['login']}",
                     'data' => "{$this->array1['data']}",
                     'text' => "{$this->array1['text']}",

@@ -29,9 +29,8 @@ class MainModel extends Model
         {
             $this->ind ++;
             $this->nesting = 0;
-            echo '<ul>';
               $this->othercommentsAction($this->array);
-            echo '</ul>';
+
         }
         echo '<ul><li><div id="comment0"></div></li></ul>';
 
@@ -41,6 +40,7 @@ class MainModel extends Model
 
     public function othercommentsAction($array)
     {
+
         $this->array = $array;
         $this->index = $this->array['id'];
         $this->sql = $this->db->getConnect()->prepare("SELECT * FROM `registor` INNER JOIN `comments` WHERE registor.user_id=comments.authorid AND comments.id=:id");
@@ -53,7 +53,7 @@ class MainModel extends Model
         $sql1 = $this->db->getConnect()->prepare("SELECT * FROM `comments` WHERE `parent_id`=:value");
         $sql1->bindParam(':value', $this->index, PDO::PARAM_INT);
         $sql1->execute();
-
+        $this->nesting = $this->array['nesting']+1;
         $this->array_view["{$this->ind}"]  = [
             'nesting' => "{$this->nesting}",
             'author' => "{$this->array['login']}",
@@ -61,10 +61,6 @@ class MainModel extends Model
             'text' => "{$this->array['text']}",
             'id' => "{$this->array['id']}"
         ];
-
-
-        /*$controller = new MainController($this->route);
-        $controller->getComment($this->array_view);*/
 
         $this->result = $sql1->rowCount();
 
@@ -74,10 +70,7 @@ class MainModel extends Model
             while ($this->array = $sql1->FETCH(PDO::FETCH_ASSOC))
             {
                 $this->ind++;
-                $this->nesting++;
-                echo '<ul>';
-                    $this->othercommentsAction($this->array);
-                echo '</ul>';
+                $this->othercommentsAction($this->array);
             }
         }
 

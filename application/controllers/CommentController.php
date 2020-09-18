@@ -11,7 +11,7 @@ class CommentController extends Controller
     public $array = [];
     public function commentsAction()
     {
-        $this->model->commentsAction("{$_POST['text']}", "{$_POST['parent_id']}", "{$_SESSION['user_id']}");
+        $this->model->commentsAction("{$_POST['text']}", "{$_POST['parent_id']}", "{$_SESSION['user_id']}", "{$_POST['nesting']}");
         $array = $this->model->replyAction();
         if(!empty($array)){
             $this->view->replyView($array);
