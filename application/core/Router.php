@@ -25,7 +25,8 @@ class Router
     public function match()
     {
         $url = trim($_SERVER['REQUEST_URI'], '/');
-        foreach ($this->routes as $route => $params) {
+        foreach ($this->routes as $route => $params)
+        {
             if (preg_match($route, $url)) {
                 $this->params = $params;
                 return true;
@@ -36,7 +37,8 @@ class Router
 
     public function run()
     {
-        if ($this->match()) {
+        if ($this->match())
+        {
             $path = 'application\controllers\\' . ucfirst($this->params['controller']) . 'Controller';
             $controller = new $path($this->params);
             $action = $this->params['action'].'Action';

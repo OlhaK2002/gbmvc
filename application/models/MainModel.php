@@ -1,9 +1,8 @@
 <?php
 
 namespace application\models;
-
-use application\controllers\MainController;
 use application\core\Model;
+use application\controllers\MainController;
 use PDO;
 
 class MainModel extends Model
@@ -16,7 +15,8 @@ class MainModel extends Model
     protected $array;
     protected $index;
     protected $array_view;
-
+    protected $ind=0;
+    protected $nesting =0 ;
 
     public function indexAction()
     {
@@ -27,11 +27,15 @@ class MainModel extends Model
 
         while ($this->array = $this->sql0->FETCH(PDO::FETCH_ASSOC))
         {
+            $this->ind ++;
+            $this->nesting = 0;
             echo '<ul>';
-            $this->othercommentsAction($this->array);
+              $this->othercommentsAction($this->array);
             echo '</ul>';
         }
         echo '<ul><li><div id="comment0"></div></li></ul>';
+
+        return $this->array_view;
 
     }
 
@@ -50,16 +54,17 @@ class MainModel extends Model
         $sql1->bindParam(':value', $this->index, PDO::PARAM_INT);
         $sql1->execute();
 
-
-        $this->array_view  = [
+        $this->array_view["{$this->ind}"]  = [
+            'nesting' => "{$this->nesting}",
             'author' => "{$this->array['login']}",
             'data' => "{$this->array['data']}",
             'text' => "{$this->array['text']}",
             'id' => "{$this->array['id']}"
         ];
 
-        $controller = new MainController($this->route);
-        $controller->getcommentAction($this->array_view);
+
+        /*$controller = new MainController($this->route);
+        $controller->getComment($this->array_view);*/
 
         $this->result = $sql1->rowCount();
 
@@ -68,14 +73,13 @@ class MainModel extends Model
 
             while ($this->array = $sql1->FETCH(PDO::FETCH_ASSOC))
             {
+                $this->ind++;
+                $this->nesting++;
                 echo '<ul>';
-                $this->othercommentsAction($this->array);
+                    $this->othercommentsAction($this->array);
                 echo '</ul>';
             }
         }
 
     }
-
-
-
 }
