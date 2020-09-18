@@ -28,8 +28,7 @@ class MainModel extends Model
         while ($this->array = $this->sql0->FETCH(PDO::FETCH_ASSOC))
         {
             $this->ind ++;
-            $this->nesting = 0;
-              $this->othercommentsAction($this->array);
+            $this->othercommentsAction($this->array);
 
         }
         echo '<ul><li><div id="comment0"></div></li></ul>';
@@ -53,6 +52,7 @@ class MainModel extends Model
         $sql1 = $this->db->getConnect()->prepare("SELECT * FROM `comments` WHERE `parent_id`=:value");
         $sql1->bindParam(':value', $this->index, PDO::PARAM_INT);
         $sql1->execute();
+
         $this->nesting = $this->array['nesting']+1;
         $this->array_view["{$this->ind}"]  = [
             'nesting' => "{$this->nesting}",
@@ -66,13 +66,11 @@ class MainModel extends Model
 
         if ($this->result > 0)
         {
-
             while ($this->array = $sql1->FETCH(PDO::FETCH_ASSOC))
             {
                 $this->ind++;
                 $this->othercommentsAction($this->array);
             }
         }
-
     }
 }

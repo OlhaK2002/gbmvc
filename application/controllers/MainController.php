@@ -12,6 +12,7 @@ class MainController extends Controller
     {
         $this->view->getView();
         $array = $this->model->indexAction();
+
         foreach ($array as $keys => $values)
         {
             for($i=0;$i<$values['nesting'];$i++)
