@@ -32,7 +32,6 @@ class MainModel extends Model
         echo '<ul><li><div id="comment0"></div></li></ul>';
 
         return $this->array_view;
-
     }
 
     public function othercommentsAction($array)
@@ -56,7 +55,8 @@ class MainModel extends Model
             'author' => "{$this->array['login']}",
             'data' => "{$this->array['data']}",
             'text' => "{$this->array['text']}",
-            'id' => "{$this->array['id']}"
+            'id' => "{$this->array['id']}",
+            'parent_id' => "{$this->array['parent_id']}"
         ];
 
         $this->result = $sql1->rowCount();
