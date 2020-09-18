@@ -70,6 +70,7 @@ class CommentModel extends Model
                 $this->index = $this->array1['id'];
 
                 $array_view  = [
+
                     'author' => "{$this->array1['login']}",
                     'data' => "{$this->array1['data']}",
                     'text' => "{$this->array1['text']}",
