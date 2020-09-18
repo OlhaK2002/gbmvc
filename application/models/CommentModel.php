@@ -4,7 +4,6 @@ namespace application\models;
 
 use application\core\Model;
 
-use application\core\View;
 use PDO;
 
 class CommentModel extends Model
@@ -58,8 +57,6 @@ class CommentModel extends Model
         }
     }
 
-
-
     public function replyAction()
     {
         if($this->text!=""&&$this->authorid!=""){
@@ -82,7 +79,6 @@ class CommentModel extends Model
                 ];
 
                 return $array_view;
-
             }
         }
     }

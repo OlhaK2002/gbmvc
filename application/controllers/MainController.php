@@ -3,11 +3,9 @@
 namespace application\controllers;
 
 use application\core\Controller;
-use PDO;
 
 class MainController extends Controller
 {
-
     public function indexAction()
     {
         $this->view->getView();
@@ -24,11 +22,4 @@ class MainController extends Controller
                 echo '</ul>';
         }
     }
-
-
-
-
-
-
-
 }

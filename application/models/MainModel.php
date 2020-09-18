@@ -2,7 +2,6 @@
 
 namespace application\models;
 use application\core\Model;
-use application\controllers\MainController;
 use PDO;
 
 class MainModel extends Model
@@ -39,7 +38,6 @@ class MainModel extends Model
 
     public function othercommentsAction($array)
     {
-
         $this->array = $array;
         $this->index = $this->array['id'];
         $this->sql = $this->db->getConnect()->prepare("SELECT * FROM `registor` INNER JOIN `comments` WHERE registor.user_id=comments.authorid AND comments.id=:id");
