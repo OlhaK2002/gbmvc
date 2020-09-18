@@ -29,6 +29,7 @@ class MainModel extends Model
             $this->ind ++;
             $this->othercommentsAction($this->array);
         }
+        echo '<ul><li><div id="comment0"></div></li></ul>';
 
         return $this->array_view;
 

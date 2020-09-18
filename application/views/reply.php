@@ -1,7 +1,6 @@
 <span style = "font-style: italic"><?php echo $author ?></span>&nbsp<span style="font-style: italic; color: lightseagreen">(<?php echo $data ?>)</span></br>&nbsp &nbsp <?php echo $text?>
 <?php  if($_SESSION["login"]!="") {
-    if($id == 0){echo '<ul><li><div id="comment0"></div></li></ul>';}
-    else {
+
             echo
             '<div class="accordion" id="accordionExample">
             <div class="card">
@@ -21,7 +20,7 @@
         
                     </div>
                 </div>
-            </div>
-            <ul><li><div id="comment'.$id.'"></div></li></ul>';
-        }
+        </div>
+        <ul><li><div id="comment'.$id.'"></div></li></ul>';
+
 }
