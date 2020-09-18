@@ -4,8 +4,6 @@ namespace application\models;
 
 use application\controllers\MainController;
 use application\core\Model;
-
-use application\core\View;
 use PDO;
 
 class MainModel extends Model
@@ -53,12 +51,12 @@ class MainModel extends Model
         $sql1->execute();
 
 
-            $this->array_view  = [
-                'author' => "{$this->array['login']}",
-                'data' => "{$this->array['data']}",
-                'text' => "{$this->array['text']}",
-                'id' => "{$this->array['id']}"
-            ];
+        $this->array_view  = [
+            'author' => "{$this->array['login']}",
+            'data' => "{$this->array['data']}",
+            'text' => "{$this->array['text']}",
+            'id' => "{$this->array['id']}"
+        ];
 
         $controller = new MainController($this->route);
         $controller->getcommentAction($this->array_view);
