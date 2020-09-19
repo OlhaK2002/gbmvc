@@ -1,6 +1,7 @@
+<div id="comment0"></div>
 <span style = "font-style: italic"><?php echo $author ?></span>&nbsp<span style="font-style: italic; color: lightseagreen">(<?php echo $data ?>)</span></br>&nbsp &nbsp <?php echo $text?>
 <?php  if($_SESSION["login"]!="") {
-    if($parent_id == 0 )echo '<ul><li><div id="comment0"></div></li></ul>';
+   // if($parent_id == "0" ) echo'<li><div id="comment0"></div></li>';
     echo '<div class="accordion" id="accordionExample">
             <div class="card">
                 <div class="card-header" id="heading' . $id . ' ?>">
